@@ -1,0 +1,8 @@
+*.log
+*.pot
+*.pyc
+.pydevproject
+.project
+.idea/*
+venv
+
