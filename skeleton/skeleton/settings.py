@@ -82,7 +82,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'cqi&k)b6m#w4i!%e7hxme_16_#zb9+9*p4v@2lrb11yak=i%g-'
+SECRET_KEY = os.environ['SKELETON_ENV_SECRET_KEY']
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
