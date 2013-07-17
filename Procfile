@@ -1,1 +1,1 @@
-web: python skeleton/manage.py run_gunicorn -b "0.0.0.0:$PORT"
+web: gunicorn --workers=4 --bind=0.0.0.0:$PORT --pythonpath skeleton skeleton.wsgi
