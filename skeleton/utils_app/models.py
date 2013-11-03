@@ -1,19 +1,20 @@
 import datetime
 from django.db import models
 from . import managers
+from django.utils.timezone import now as utcnow
 
 class TimestampedModel(models.Model):
     """
     Abstract base model that keeps track of added/updated timestamps.
     """
-    added = models.DateTimeField(default=datetime.datetime.now, db_index=True)
-    updated = models.DateTimeField(default=datetime.datetime.now, db_index=True)
+    added = models.DateTimeField(default=utcnow, db_index=True)
+    updated = models.DateTimeField(default=utcnow, db_index=True)
 
     class Meta(object):
         abstract = True
 
     def save(self, *args, **kwargs):
-        self.updated = datetime.datetime.now()
+        self.updated = utcnow()
         super(TimestampedModel, self).save(*args, **kwargs)
 
 class DeleteStatusModel(models.Model):
