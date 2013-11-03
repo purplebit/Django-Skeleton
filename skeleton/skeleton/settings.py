@@ -2,7 +2,8 @@
 
 import os, dj_database_url
 
-DEBUG = (os.environ['SKELETON_ENV_DEBUG'] == 'TRUE')
+# TODO : Change to False and remove this comment.
+DEBUG = (os.environ.get('SKELETON_ENV_DEBUG', 'TRUE') == 'TRUE')
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -62,7 +63,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = os.environ['SKELETON_ENV_STATIC_URL']
+STATIC_URL = os.environ.get('SKELETON_ENV_STATIC_URL', '/static/')
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 
@@ -82,7 +83,8 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ['SKELETON_ENV_SECRET_KEY']
+# TODO : Change to a real secret key and remove this comment.
+SECRET_KEY = os.environ.get('SKELETON_ENV_SECRET_KEY', '1234567890123456789012345678901234567890')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -190,10 +192,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # ##
 
 # Uncomment for S3 support
-# DEFAULT_FILE_STORAGE = os.environ['SKELETON_ENV_DEFAULT_FILE_STORAGE']
-# STATICFILES_STORAGE = os.environ['SKELETON_ENV_STATICFILES_STORAGE']
-# AWS_ACCESS_KEY_ID = os.environ['SKELETON_ENV_AWS_ACCESS_KEY_ID']
-# AWS_SECRET_ACCESS_KEY = os.environ['SKELETON_ENV_AWS_SECRET_ACCESS_KEY']
-# AWS_STORAGE_BUCKET_NAME = os.environ['SKELETON_ENV_AWS_STORAGE_BUCKET_NAME']
+# DEFAULT_FILE_STORAGE = os.environ.get('SKELETON_ENV_DEFAULT_FILE_STORAGE', 'storages.backends.s3boto.S3BotoStorage')
+# STATICFILES_STORAGE = os.environ.get('SKELETON_ENV_STATICFILES_STORAGE', 'django.contrib.staticfiles.storage.StaticFilesStorage')
+# AWS_ACCESS_KEY_ID = os.environ.get('SKELETON_ENV_AWS_ACCESS_KEY_ID', '')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('SKELETON_ENV_AWS_SECRET_ACCESS_KEY', '')
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('SKELETON_ENV_AWS_STORAGE_BUCKET_NAME', '')
 
 
