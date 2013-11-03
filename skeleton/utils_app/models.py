@@ -34,3 +34,32 @@ class DeleteStatusModel(models.Model):
         else:
             self.is_deleted = True
             self.save()
+
+class GenericLinkedModel(models.Model):
+    """
+    Abstract base model that allows for an object to be linked (foreign-keyed)
+    to various models. Useful example: Comments or tags for different types of
+    objects.
+
+    Example Usage:
+    ==============
+    
+    from django.contrib.contenttypes import generic
+    ...
+
+    class Comment(GenericLinkedModel):
+        text = models.Charfield(max_length=500)
+        ...
+
+    class Post(models.Model):
+        comments = generic.GenericRelation(Comment)
+        ...
+
+    """
+
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        abstract = True
