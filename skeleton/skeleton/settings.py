@@ -147,10 +147,8 @@ INSTALLED_APPS = (
 
 ips = ["10.0.0.%d" %i for i in range(1, 256)]
 ips.append('127.0.0.1')
-ips.append('fitblok-local.com')
 ips.append('192.168.56.101')
 ips.append('192.168.56.1')
-ips.append('fitblok-local.com')
 INTERNAL_IPS = tuple(ips)
 
 # A sample logging configuration. The only tangible logging
