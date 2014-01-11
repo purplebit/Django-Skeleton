@@ -2,6 +2,9 @@ import datetime
 from django.db import models
 from . import managers
 from django.utils.timezone import now as utcnow
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+
 
 class TimestampedModel(models.Model):
     """
